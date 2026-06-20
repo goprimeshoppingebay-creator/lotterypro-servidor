@@ -26,10 +26,27 @@ const API_BASE = "https://www.lotteryresultsfeed.com/api"; // ← endereço REAL
 //  (UK Lotto 727 · EuroMillions 728 · EuroJackpot 708 · Thunderball 724)
 // ───────────────────────────────────────────────────────────────
 const LOTERIAS = [
-  { id: "lotto",        feedId: 727 }, // UK Lotto
-  { id: "euromillions", feedId: 728 }, // EuroMillions (Reino Unido)
-  { id: "eurojackpot",  feedId: 708 }, // EuroJackpot (sorteio europeu, listado na Alemanha)
-  { id: "thunderball",  feedId: 724 }, // Thunderball
+  { id: "lotto",            feedId: 727 }, // UK Lotto
+  { id: "euromillions",     feedId: 728 }, // EuroMillions (Reino Unido)
+  { id: "eurojackpot",      feedId: 708 }, // EuroJackpot (sorteio europeu, listado na Alemanha)
+  { id: "thunderball",      feedId: 724 }, // Thunderball
+  { id: "setforlife",       feedId: 725 }, // Set for Life (UK)
+  { id: "health",           feedId: 730 }, // Health Lottery (UK)
+  { id: "ielotto",          feedId: 717 }, // Irish Lotto
+  { id: "ielottoplus1",     feedId: 718 }, // Irish Lotto Plus 1
+  { id: "ielottoplus2",     feedId: 719 }, // Irish Lotto Plus 2
+  { id: "eurodreams",       feedId: 721 }, // EuroDreams (IE)
+  { id: "dailymillion",     feedId: 715 }, // Daily Million (IE)
+  { id: "dailymillionplus", feedId: 716 }, // Daily Million Plus (IE)
+  { id: "lotto6aus49",      feedId: 700 }, // Lotto 6aus49 (Alemanha)
+  { id: "superenalotto",    feedId: 712 }, // SuperEnalotto (Itália)
+  { id: "millionday",       feedId: 710 }, // MillionDay (Itália)
+  { id: "vincicasa",        feedId: 709 }, // VinciCasa (Itália)
+  { id: "sivincetutto",     feedId: 711 }, // SiVinceTutto (Itália)
+  { id: "frloto",           feedId: 734 }, // Loto (França)
+  { id: "laprimitiva",      feedId: 805 }, // La Primitiva (Espanha)
+  { id: "elgordo",          feedId: 806 }, // El Gordo (Espanha)
+  { id: "bonoloto",         feedId: 807 }, // Bonoloto (Espanha)
 ];
 
 let resultados = {};
@@ -113,7 +130,7 @@ async function atualizarTodos() {
 //  ROTAS
 // ───────────────────────────────────────────────────────────────
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // no lançamento, troca "*" pelo endereço do teu site
+  res.header("Access-Control-Allow-Origin", "https://lotterypro-site.vercel.app"); // só o teu site pode pedir
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
