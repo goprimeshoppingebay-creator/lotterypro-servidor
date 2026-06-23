@@ -172,8 +172,17 @@ async function atualizarTodos() {
 // ───────────────────────────────────────────────────────────────
 //  ROTAS
 // ───────────────────────────────────────────────────────────────
+// Endereços do teu site que podem pedir resultados (novo domínio + antigos).
+const ORIGENS_PERMITIDAS = [
+  "https://mylottolab.com",
+  "https://www.mylottolab.com",
+  "https://lotterypro-site.vercel.app",
+];
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://lotterypro-site.vercel.app"); // só o teu site pode pedir
+  const origem = req.headers.origin;
+  if (origem && ORIGENS_PERMITIDAS.includes(origem)) {
+    res.header("Access-Control-Allow-Origin", origem); // devolve o endereço que pediu, se for autorizado
+  }
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
